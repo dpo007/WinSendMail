@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WinSendMail.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SaveEmailsToDisk" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MailServer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">mail.yourdomain.com</Value>
+    </Setting>
+    <Setting Name="SMTPPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">587</Value>
+    </Setting>
+    <Setting Name="SMTPUserName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">MailUser</Value>
+    </Setting>
+    <Setting Name="SMTPPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">MaiUserPassword</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
