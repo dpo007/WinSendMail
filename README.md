@@ -7,7 +7,7 @@ Initial intended usage is with IIS, PHP and Exchange (all on-prem).
 
 Written because existing "Fake Sendmail" applications for Windows were lacking (mainly in the area of error trapping/logging), and I needed to debug why certain emails were not sending.
 
-It was quicker to just write it than to keep finding/trying various (old-as-dirt) replacements.
+For my case, it was quicker to just write it than to keep finding/trying various (old-as-dirt) replacements.
 
-Depends on MimeKit and MailKit packages.
-Currently targets .Net Framework 4.7.2.
+* Depends on MimeKit and MailKit packages.
+* Currently targets .Net Framework 4.7.2.
