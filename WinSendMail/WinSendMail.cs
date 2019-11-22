@@ -22,6 +22,7 @@ namespace WinSendMail
             string output = null;
             string line;
 
+            // Read from console/stdin until "Ctrl-Z"...
             while ((line = Console.ReadLine()) != null)
             {
                 output += line + Environment.NewLine;
@@ -29,31 +30,33 @@ namespace WinSendMail
 
             if (Properties.Settings.Default.SaveEmailsToDisk)
             {
+                // Show raw email in console.
                 Console.Write(output);
 
+                // Save the email to a file on disk.
                 string rndFileNamePart = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
                 StreamWriter streamWriter = new StreamWriter(@"WinSendMailLog-" + rndFileNamePart + ".txt");
-
                 streamWriter.Write(output);
-
                 streamWriter.Dispose();
             }
 
+            // Import raw email into a MimeMessage object.
             _ = new MimeMessage();
             MimeMessage rawEmail = MimeMessage.Load(GenerateStreamFromString(output));
 
-            using (SmtpClient client = new SmtpClient())
+            // Send the email.
+            using (SmtpClient mailClient = new SmtpClient())
             {
-                client.Connect(Properties.Settings.Default.MailServer, Properties.Settings.Default.SMTPPort);
+                mailClient.Connect(Properties.Settings.Default.MailServer, Properties.Settings.Default.SMTPPort);
                 
                 // Note: since we don't have an OAuth2 token, disable
                 // the XOAUTH2 authentication mechanism.
-                client.AuthenticationMechanisms.Remove("XOAUTH2");
+                mailClient.AuthenticationMechanisms.Remove("XOAUTH2");
 
-                client.Authenticate(Properties.Settings.Default.SMTPUserName, Properties.Settings.Default.SMTPPassword);
+                mailClient.Authenticate(Properties.Settings.Default.SMTPUserName, Properties.Settings.Default.SMTPPassword);
 
-                client.Send(rawEmail);
-                client.Disconnect(true);
+                mailClient.Send(rawEmail);
+                mailClient.Disconnect(true);
             }
         }
     }
