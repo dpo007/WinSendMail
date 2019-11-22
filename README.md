@@ -10,3 +10,4 @@ Written because existing "Fake Sendmail" applications for Windows were lacking (
 It was quicker to just write it than to keep finding/trying various (old-as-dirt) replacements.
 
 Depends on MimeKit and MailKit packages.
+Currently targets .Net Framework 4.7.2.
