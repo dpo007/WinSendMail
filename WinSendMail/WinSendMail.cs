@@ -17,32 +17,32 @@ namespace WinSendMail
             return stream;
         }
 
-        static void Main(string[] args)
+        static void Main()
         {
-            string output = null;
+            string rawEmail = null;
             string line;
 
             // Read from console/stdin until "Ctrl-Z"...
             while ((line = Console.ReadLine()) != null)
             {
-                output += line + Environment.NewLine;
+                rawEmail += line + Environment.NewLine;
             }
 
             if (Properties.Settings.Default.SaveEmailsToDisk)
             {
                 // Show raw email in console.
-                Console.Write(output);
+                Console.Write(rawEmail);
 
                 // Save the email to a file on disk.
                 string rndFileNamePart = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
                 StreamWriter streamWriter = new StreamWriter(@"WinSendMailLog-" + rndFileNamePart + ".txt");
-                streamWriter.Write(output);
+                streamWriter.Write(rawEmail);
                 streamWriter.Dispose();
             }
 
             // Import raw email into a MimeMessage object.
             _ = new MimeMessage();
-            MimeMessage rawEmail = MimeMessage.Load(GenerateStreamFromString(output));
+            MimeMessage mimeEmailMsg = MimeMessage.Load(GenerateStreamFromString(rawEmail));
 
             // Send the email.
             using (SmtpClient mailClient = new SmtpClient())
@@ -55,7 +55,7 @@ namespace WinSendMail
 
                 mailClient.Authenticate(Properties.Settings.Default.SMTPUserName, Properties.Settings.Default.SMTPPassword);
 
-                mailClient.Send(rawEmail);
+                mailClient.Send(mimeEmailMsg);
                 mailClient.Disconnect(true);
             }
         }
