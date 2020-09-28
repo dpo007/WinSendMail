@@ -17,5 +17,8 @@
     <Setting Name="SMTPPassword" Type="System.String" Scope="Application">
       <Value Profile="(Default)">MaiUserPassword</Value>
     </Setting>
+    <Setting Name="Anonymous" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

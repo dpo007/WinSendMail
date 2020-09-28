@@ -1,4 +1,5 @@
-﻿using MailKit.Net.Smtp;
+﻿using MailKit;
+using MailKit.Net.Smtp;
 using MimeKit;
 using System;
 using System.IO;
@@ -45,7 +46,7 @@ namespace WinSendMail
             MimeMessage mimeEmailMsg = MimeMessage.Load(GenerateStreamFromString(rawEmail));
 
             // Send the email.
-            using (SmtpClient mailClient = new SmtpClient())
+            using (SmtpClient mailClient = new SmtpClient(new ProtocolLogger("WinSendMail_SMTP.log")))
             {
                 mailClient.Connect(Properties.Settings.Default.MailServer, Properties.Settings.Default.SMTPPort);
                 
@@ -53,7 +54,10 @@ namespace WinSendMail
                 // the XOAUTH2 authentication mechanism.
                 mailClient.AuthenticationMechanisms.Remove("XOAUTH2");
 
-                mailClient.Authenticate(Properties.Settings.Default.SMTPUserName, Properties.Settings.Default.SMTPPassword);
+                if (!Properties.Settings.Default.Anonymous)
+                {
+                    mailClient.Authenticate(Properties.Settings.Default.SMTPUserName, Properties.Settings.Default.SMTPPassword);
+                }
 
                 mailClient.Send(mimeEmailMsg);
                 mailClient.Disconnect(true);
