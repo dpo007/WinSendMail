@@ -1,16 +1,15 @@
-﻿using System.Resources;
-using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿using System.Reflection;
+using System.Resources;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WinSendMail")]
+[assembly: AssemblyTitle("WinSendMailMS365")]
 [assembly: AssemblyDescription("Sendmail replacement for use in Windows")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Cantankerous Apparatus")]
-[assembly: AssemblyProduct("WinSendMail")]
+[assembly: AssemblyProduct("WinSendMailMS365")]
 [assembly: AssemblyCopyright("Copyright © 2019 - Cantankerous Apparatus")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
