@@ -1,4 +1,6 @@
 # WinSendMail
+** Project replaced by [WinSendMailMS365](https://github.com/dpo007/WinSendMailMS365/settings) **
+
 Basic [Sendmail](https://linux.die.net/man/8/sendmail.sendmail) replacement for Windows, written in C#.
 
 Takes raw email fed via Console/StdIn, and sends it via (authenticated) SMTP.
