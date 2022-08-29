@@ -1,5 +1,5 @@
 # WinSendMail
-** Project replaced by [WinSendMailMS365](https://github.com/dpo007/WinSendMailMS365/settings) **
+** Project replaced by [WinSendMailMS365](https://github.com/dpo007/WinSendMailMS365) **
 
 Basic [Sendmail](https://linux.die.net/man/8/sendmail.sendmail) replacement for Windows, written in C#.
 
